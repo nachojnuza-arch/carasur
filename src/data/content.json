@@ -1,0 +1,86 @@
+{
+  "site": {
+    "name": "Cara Sur",
+    "tagline": "Productora Editorial & Audiovisual"
+  },
+  "hero": {
+    "title": "Cara Sur Productora",
+    "subtitle": "Creación, pensamiento y producción independiente",
+    "description": "Desarrollamos proyectos audiovisuales y publicaciones editoriales con una mirada situada y crítica sobre nuestro tiempo contemporáneo."
+  },
+  "editorial": {
+    "title": "Editorial",
+    "subtitle": "Publicaciones, ensayos y catálogos",
+    "description": "Espacio dedicado a la edición y difusión de textos críticos, ensayos de época, memorias visuales y publicaciones independientes.",
+    "projects": [
+      {
+        "id": "ed-1",
+        "title": "Cuadernos de Pensamiento Crítico",
+        "description": "Serie de ensayos breves sobre cultura, territorio y transformaciones contemporáneas.",
+        "year": "2025",
+        "tags": [
+          "Ensayo",
+          "Filosofía",
+          "Territorio"
+        ],
+        "category": "Colección Ensayo"
+      }
+    ]
+  },
+  "audiovisual": {
+    "title": "Audiovisual",
+    "subtitle": "Cine, documentales y proyectos en desarrollo",
+    "description": "Producción cinematográfica y documental enfocada en narrativas de autor, investigaciones de archivo y registros territoriales.",
+    "projects": [
+      {
+        "id": "av-2",
+        "title": "Voces en Tránsito",
+        "description": "Serie de cortometrajes exploratorios sobre historias de vida y migración.",
+        "year": "2024",
+        "tags": [
+          "Cortometraje",
+          "Archivo"
+        ],
+        "category": "Serie Cortometrajes"
+      }
+    ]
+  },
+  "pensarLaEpoca": {
+    "title": "Pensar la Época",
+    "subtitle": "Ciclo de entrevistas y conversaciones urgentes",
+    "description": "Un ciclo de encuentros y diálogos en profundidad con intelectuales, creadores y referentes para debatir las preguntas cardinales de nuestra era.",
+    "episodes": [
+      {
+        "id": "ple-1",
+        "title": "Episodio 1: Desafíos de la cultura en el siglo XXI",
+        "guest": "Invitado Especial",
+        "description": "Conversación sobre las derivas de la producción simbólica frente a la tecnologización acelerada.",
+        "year": "2025",
+        "date": "Temporada 1",
+        "videoUrl": ""
+      },
+      {
+        "id": "ple-2",
+        "title": "Episodio 2: Memoria, territorio y nuevos relatos",
+        "guest": "Invitada Especial",
+        "description": "Reflexiones sobre el arraigo, la identidad y las nuevas formas de narrar lo colectivo.",
+        "year": "2025",
+        "date": "Temporada 1",
+        "videoUrl": ""
+      }
+    ]
+  },
+  "contacto": {
+    "title": "Contacto & Colaboraciones",
+    "description": "Para consultas institucionales, colaboraciones editoriales o proyectos audiovisuales, podés comunicarte con nuestro equipo.",
+    "email": "carasurproductora@gmail.com",
+    "phone": "221-561-7045",
+    "instagram": "@carasur.lp",
+    "youtube": "Cara Sur Productora",
+    "location": "La Plata, Buenos Aires, Argentina"
+  },
+  "footer": {
+    "copyright": "© 2026 Cara Sur Productora. Todos los derechos reservados.",
+    "description": "Productora audiovisual y editorial independiente."
+  }
+}

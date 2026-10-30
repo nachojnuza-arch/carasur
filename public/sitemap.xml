@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Inicio -->
+  <url>
+    <loc>https://carasurproductora.com.ar/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Área Editorial -->
+  <url>
+    <loc>https://carasurproductora.com.ar/#editorial</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Área Audiovisual -->
+  <url>
+    <loc>https://carasurproductora.com.ar/#audiovisual</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pensar la Época -->
+  <url>
+    <loc>https://carasurproductora.com.ar/#pensar-la-epoca</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contacto & Colaboraciones -->
+  <url>
+    <loc>https://carasurproductora.com.ar/#contacto</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Términos & Condiciones -->
+  <url>
+    <loc>https://carasurproductora.com.ar/#terminos</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Privacidad & Cookies -->
+  <url>
+    <loc>https://carasurproductora.com.ar/#privacidad</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

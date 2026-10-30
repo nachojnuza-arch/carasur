@@ -1,0 +1,17 @@
+# Robots.txt - Cara Sur Productora
+# https://carasurproductora.com.ar
+
+User-agent: *
+Allow: /
+Allow: /#editorial
+Allow: /#audiovisual
+Allow: /#pensar-la-epoca
+Allow: /#contacto
+
+# Desautorizar rutas administrativas y APIs internas locales
+Disallow: /admin
+Disallow: /#admin
+Disallow: /api/
+
+# Sitemap de indexación
+Sitemap: /sitemap.xml

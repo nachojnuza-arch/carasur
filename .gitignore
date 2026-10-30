@@ -1,0 +1,39 @@
+# Dependencias
+node_modules/
+.pnp
+.pnp.js
+
+# Compilación y producción
+dist/
+dist-ssr/
+*.local
+
+# Panel de administración y servidor local (SOLO EN PC LOCAL)
+server/
+src/components/AdminView.tsx
+
+# Documentos originales (SOLO TEXTO PLANO EN content.json, NUNCA DOCUMENTOS BINARIOS)
+*.pdf
+*.doc
+*.docx
+*.odt
+*.rtf
+*.epub
+*.deb
+
+# Archivos de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Logs y temporales
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.tmp.*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

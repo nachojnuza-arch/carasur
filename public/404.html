@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Página no encontrada | Cara Sur Productora</title>
+    <meta name="description" content="La página solicitada no existe o ha sido reubicada en el catálogo de Cara Sur Productora." />
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #f9f9f8;
+        color: #111111;
+        font-family: 'Geist', system-ui, -apple-system, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 680px;
+        margin: auto;
+        text-align: center;
+        padding: 40px 24px;
+        background: #ffffff;
+        border: 1px solid #e5e4e0;
+        border-radius: 28px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      }
+      .logo-img {
+        height: 38px;
+        width: auto;
+        margin: 0 auto 28px auto;
+        display: block;
+      }
+      .badge {
+        display: inline-block;
+        font-family: monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #8c8a85;
+        padding: 4px 12px;
+        border: 1px solid #e5e4e0;
+        border-radius: 9999px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-family: 'Newsreader', Georgia, serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: clamp(2.5rem, 6vw, 4.2rem);
+        line-height: 1.1;
+        margin-bottom: 16px;
+        color: #111111;
+      }
+      p {
+        color: #555452;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 32px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: monospace;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 12px 24px;
+        border-radius: 9999px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      .btn-primary {
+        background-color: #111111;
+        color: #f9f9f8;
+        border: 1px solid #111111;
+      }
+      .btn-primary:hover {
+        background-color: #333230;
+      }
+      .btn-secondary {
+        background-color: #f9f9f8;
+        color: #111111;
+        border: 1px solid #e5e4e0;
+      }
+      .btn-secondary:hover {
+        background-color: #ffffff;
+        border-color: #111111;
+      }
+      footer {
+        text-align: center;
+        font-family: monospace;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #8c8a85;
+        padding: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+
+    <div class="container">
+      <a href="/" title="Ir a Cara Sur Productora">
+        <img src="/logo-full-transparent.png" alt="Cara Sur Productora" class="logo-img" />
+      </a>
+
+      <div class="badge">Error 404 · Dirección Inexistente</div>
+
+      <h1>Página no encontrada</h1>
+
+      <p>
+        El enlace que intentaste abrir no existe, ha sido movido o modificado dentro del archivo de Cara Sur.
+      </p>
+
+      <div class="actions">
+        <a href="/" class="btn btn-primary">
+          <span>← Volver al Inicio</span>
+        </a>
+        <a href="/#editorial" class="btn btn-secondary">
+          <span>Área Editorial</span>
+        </a>
+        <a href="/#audiovisual" class="btn btn-secondary">
+          <span>Área Audiovisual</span>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      © 2026 Cara Sur Productora · La Plata, Buenos Aires, Argentina
+    </footer>
+  </body>
+</html>
