@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { SiteContent, Episode } from '../types';
 import { getYouTubeEmbedUrl } from '../utils/youtube';
+import { LikeButton } from './LikeButton';
 
 interface PensarLaEpocaSectionProps {
   content: SiteContent;
@@ -125,7 +126,14 @@ export const PensarLaEpocaSection: React.FC<PensarLaEpocaSectionProps> = ({
                   </div>
                 </button>
                 <div className="flex items-center justify-between text-[10px] font-mono text-[#8c8a85] uppercase pb-2 border-b border-[#e5e4e0]">
-                  <span>{ep.date || 'Ciclo 2025'}</span>
+                  <div className="flex items-center gap-2">
+                    {ep.featured && (
+                      <span className="px-2 py-0.5 rounded-full bg-red-600 text-white font-bold text-[9px]">
+                        ★ DESTACADO
+                      </span>
+                    )}
+                    <span>{ep.date || 'Ciclo 2025'}</span>
+                  </div>
                   <span>Invitado: {ep.guest}</span>
                 </div>
 
@@ -138,27 +146,30 @@ export const PensarLaEpocaSection: React.FC<PensarLaEpocaSectionProps> = ({
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#e5e4e0] flex items-center justify-between text-xs font-mono">
+              <div className="pt-4 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
                 <button
                   onClick={() => setSelectedEpisode(ep)}
                   className="text-[#111111] uppercase tracking-wider hover:underline text-[11px]"
                 >
                   Detalles del Episodio →
                 </button>
-                {ep.videoUrl ? (
-                  <a
-                    href={ep.videoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-1.5 text-[10px] uppercase tracking-wider bg-[#111111] text-white rounded-full hover:bg-[#333230]"
-                  >
-                    YouTube ↗
-                  </a>
-                ) : (
-                  <span className="text-[10px] text-[#8c8a85] uppercase px-2.5 py-0.5 bg-[#f9f9f8] rounded-full">
-                    Próximamente disponible
-                  </span>
-                )}
+                <div className="flex items-center gap-2">
+                  <LikeButton contentKey={`ple:${ep.id}`} />
+                  {ep.videoUrl ? (
+                    <a
+                      href={ep.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-1.5 text-[10px] uppercase tracking-wider bg-[#111111] text-white rounded-full hover:bg-[#333230]"
+                    >
+                      YouTube ↗
+                    </a>
+                  ) : (
+                    <span className="text-[10px] text-[#8c8a85] uppercase px-2.5 py-0.5 bg-[#f9f9f8] rounded-full">
+                      Próximamente disponible
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -226,21 +237,24 @@ export const PensarLaEpocaSection: React.FC<PensarLaEpocaSectionProps> = ({
               {selectedEpisode.description}
             </p>
 
-            <div className="pt-4 border-t border-[#e5e4e0] flex items-center justify-between">
-              {selectedEpisode.videoUrl ? (
-                <a
-                  href={selectedEpisode.videoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 text-xs font-mono uppercase tracking-wider bg-[#111111] text-[#f9f9f8] rounded-full hover:bg-[#333230]"
-                >
-                  Ver Episodio Completo ↗
-                </a>
-              ) : (
-                <span className="text-xs font-mono text-[#8c8a85] uppercase">
-                  Episodio en etapa de edición
-                </span>
-              )}
+            <div className="pt-4 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                {selectedEpisode.videoUrl ? (
+                  <a
+                    href={selectedEpisode.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2 text-xs font-mono uppercase tracking-wider bg-[#111111] text-[#f9f9f8] rounded-full hover:bg-[#333230]"
+                  >
+                    Ver Episodio Completo ↗
+                  </a>
+                ) : (
+                  <span className="text-xs font-mono text-[#8c8a85] uppercase">
+                    Episodio en etapa de edición
+                  </span>
+                )}
+                <LikeButton contentKey={`ple:${selectedEpisode.id}`} />
+              </div>
               <button
                 onClick={() => setSelectedEpisode(null)}
                 className="text-xs font-mono uppercase text-[#8c8a85] hover:text-[#111111]"

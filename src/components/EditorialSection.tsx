@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { SiteContent, Project } from '../types';
 import { ShareInstagramButton } from './ShareInstagramModal';
+import { LikeButton } from './LikeButton';
 
 interface EditorialSectionProps {
   content: SiteContent;
@@ -228,7 +229,8 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({
                 <span>→</span>
               </span>
 
-              <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+              <div className="flex flex-wrap items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                <LikeButton contentKey={`editorial:${proj.id}`} />
                 <ShareInstagramButton
                   title={proj.title}
                   category={proj.category}
@@ -359,7 +361,7 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({
 
             {/* Actions Footer */}
             <div className="pt-6 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => {
                     setSelectedProject(null);
@@ -378,6 +380,7 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({
                   instagramUrl={selectedProject.instagramUrl}
                   imageUrl={selectedProject.image}
                 />
+                <LikeButton contentKey={`editorial:${selectedProject.id}`} />
               </div>
               <button
                 onClick={() => setSelectedProject(null)}

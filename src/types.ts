@@ -26,6 +26,7 @@ export interface Episode {
   date?: string;
   videoUrl?: string;
   image?: string;
+  featured?: boolean;
 }
 
 export interface SiteContent {

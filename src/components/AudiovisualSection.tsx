@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { SiteContent, Project } from '../types';
 import { getYouTubeEmbedUrl, getYouTubeThumbnail } from '../utils/youtube';
 import { ShareInstagramButton } from './ShareInstagramModal';
+import { LikeButton } from './LikeButton';
 
 interface AudiovisualSectionProps {
   content: SiteContent;
@@ -139,7 +140,8 @@ export const AudiovisualSection: React.FC<AudiovisualSectionProps> = ({
                 <span className="text-[#111111] uppercase tracking-wider text-[11px] group-hover:underline font-medium">
                   {proj.youtubeUrl ? '▶ Ver Video / Ficha →' : 'Ver Ficha Completa →'}
                 </span>
-                <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                <div className="flex flex-wrap items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                  <LikeButton contentKey={`audiovisual:${proj.id}`} />
                   <ShareInstagramButton
                     title={proj.title}
                     category={proj.category}
@@ -256,7 +258,7 @@ export const AudiovisualSection: React.FC<AudiovisualSectionProps> = ({
             )}
 
             <div className="pt-4 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => {
                     setSelectedFilm(null);
@@ -274,6 +276,7 @@ export const AudiovisualSection: React.FC<AudiovisualSectionProps> = ({
                   instagramUrl={selectedFilm.instagramUrl}
                   imageUrl={selectedFilm.image || (selectedFilm.youtubeUrl ? getYouTubeThumbnail(selectedFilm.youtubeUrl) || undefined : undefined)}
                 />
+                <LikeButton contentKey={`audiovisual:${selectedFilm.id}`} />
               </div>
               <button
                 onClick={() => setSelectedFilm(null)}

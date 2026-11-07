@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { SiteContent, Project } from '../types';
 import { getYouTubeThumbnail, getYouTubeEmbedUrl } from '../utils/youtube';
 import { ShareInstagramButton } from './ShareInstagramModal';
+import { LikeButton } from './LikeButton';
 
 interface FeaturedShowcaseProps {
   content: SiteContent;
@@ -30,10 +31,14 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
     audiovisualProjects.find((p) => p.featured) ||
     (audiovisualProjects.length > 0 ? audiovisualProjects[audiovisualProjects.length - 1] : null);
 
-  // Auto-featured episode from the "Pensar la Época" cycle (latest with video)
+  // Featured episode from the "Pensar la Época" cycle:
+  // 1. Check if the admin marked a specific episode with featured: true
+  // 2. Otherwise default to the latest episode with video
   const pleEpisodes = content.pensarLaEpoca.episodes || [];
   const featuredPensarLaEpocaEpisode =
-    [...pleEpisodes].reverse().find((e) => e.videoUrl) || null;
+    [...pleEpisodes].reverse().find((e) => e.featured) ||
+    [...pleEpisodes].reverse().find((e) => e.videoUrl) ||
+    null;
 
   const [activeTab, setActiveTab] = useState<'all' | 'editorial' | 'audiovisual'>('all');
   const [showFeaturedPleVideo, setShowFeaturedPleVideo] = useState(false);
@@ -165,7 +170,7 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
 
             {/* Bottom Actions + Instagram Share */}
             <div
-              className="pt-4 border-t border-[#e5e4e0] flex items-center justify-between gap-3"
+              className="pt-4 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-3"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -176,15 +181,18 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
                 Leer Publicación →
               </button>
 
-              <ShareInstagramButton
-                title={featuredEditorial.title}
-                category={featuredEditorial.category}
-                type="editorial"
-                author={featuredEditorial.author}
-                instagramHandle={igHandle}
-                instagramUrl={featuredEditorial.instagramUrl}
-                imageUrl={featuredEditorial.image}
-              />
+              <div className="flex items-center gap-2">
+                <LikeButton contentKey={`editorial:${featuredEditorial.id}`} />
+                <ShareInstagramButton
+                  title={featuredEditorial.title}
+                  category={featuredEditorial.category}
+                  type="editorial"
+                  author={featuredEditorial.author}
+                  instagramHandle={igHandle}
+                  instagramUrl={featuredEditorial.instagramUrl}
+                  imageUrl={featuredEditorial.image}
+                />
+              </div>
             </div>
           </div>
         )}
@@ -269,7 +277,7 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
 
             {/* Bottom Actions + Instagram Share */}
             <div
-              className="pt-4 border-t border-[#e5e4e0] flex items-center justify-between gap-3"
+              className="pt-4 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-3"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -280,14 +288,17 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
                 Ver Obra / Video →
               </button>
 
-              <ShareInstagramButton
-                title={featuredAudiovisual.title}
-                category={featuredAudiovisual.category}
-                type="audiovisual"
-                instagramHandle={igHandle}
-                instagramUrl={featuredAudiovisual.instagramUrl}
-                imageUrl={featuredAudiovisual.image || (featuredAudiovisual.youtubeUrl ? getYouTubeThumbnail(featuredAudiovisual.youtubeUrl) || undefined : undefined)}
-              />
+              <div className="flex items-center gap-2">
+                <LikeButton contentKey={`audiovisual:${featuredAudiovisual.id}`} />
+                <ShareInstagramButton
+                  title={featuredAudiovisual.title}
+                  category={featuredAudiovisual.category}
+                  type="audiovisual"
+                  instagramHandle={igHandle}
+                  instagramUrl={featuredAudiovisual.instagramUrl}
+                  imageUrl={featuredAudiovisual.image || (featuredAudiovisual.youtubeUrl ? getYouTubeThumbnail(featuredAudiovisual.youtubeUrl) || undefined : undefined)}
+                />
+              </div>
             </div>
           </div>
         )}
@@ -380,7 +391,7 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
 
               {/* Bottom Actions + Instagram Share */}
               <div
-                className="pt-4 border-t border-[#e5e4e0] flex items-center justify-between gap-3"
+                className="pt-4 border-t border-[#e5e4e0] flex flex-wrap items-center justify-between gap-3"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
@@ -391,14 +402,17 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
                   Ir al Ciclo →
                 </button>
 
-                <ShareInstagramButton
-                  title={featuredPensarLaEpocaEpisode.title}
-                  category="Ciclo de Entrevistas"
-                  type="audiovisual"
-                  instagramHandle={igHandle}
-                  instagramUrl={undefined}
-                  imageUrl={featuredPensarLaEpocaEpisode.image || (featuredPensarLaEpocaEpisode.videoUrl ? getYouTubeThumbnail(featuredPensarLaEpocaEpisode.videoUrl) || undefined : undefined)}
-                />
+                <div className="flex items-center gap-2">
+                  <LikeButton contentKey={`ple:${featuredPensarLaEpocaEpisode.id}`} />
+                  <ShareInstagramButton
+                    title={featuredPensarLaEpocaEpisode.title}
+                    category="Ciclo de Entrevistas"
+                    type="audiovisual"
+                    instagramHandle={igHandle}
+                    instagramUrl={undefined}
+                    imageUrl={featuredPensarLaEpocaEpisode.image || (featuredPensarLaEpocaEpisode.videoUrl ? getYouTubeThumbnail(featuredPensarLaEpocaEpisode.videoUrl) || undefined : undefined)}
+                  />
+                </div>
               </div>
             </div>
           )}
