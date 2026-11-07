@@ -30,9 +30,15 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
     audiovisualProjects.find((p) => p.featured) ||
     (audiovisualProjects.length > 0 ? audiovisualProjects[audiovisualProjects.length - 1] : null);
 
-  const [activeTab, setActiveTab] = useState<'all' | 'editorial' | 'audiovisual'>('all');
+  // Auto-featured episode from the "Pensar la Época" cycle (latest with video)
+  const pleEpisodes = content.pensarLaEpoca.episodes || [];
+  const featuredPensarLaEpocaEpisode =
+    [...pleEpisodes].reverse().find((e) => e.videoUrl) || null;
 
-  if (!featuredEditorial && !featuredAudiovisual) {
+  const [activeTab, setActiveTab] = useState<'all' | 'editorial' | 'audiovisual'>('all');
+  const [showFeaturedPleVideo, setShowFeaturedPleVideo] = useState(false);
+
+  if (!featuredEditorial && !featuredAudiovisual && !featuredPensarLaEpocaEpisode) {
     return null;
   }
 
@@ -285,6 +291,117 @@ export const FeaturedShowcase: React.FC<FeaturedShowcaseProps> = ({
             </div>
           </div>
         )}
+
+        {/* PENSAR LA ÉPOCA SPOTLIGHT — auto-linked from cycle episodes */}
+        {featuredPensarLaEpocaEpisode &&
+          (activeTab === 'all' || activeTab === 'audiovisual') && (
+            <div
+              onClick={() => onNavigateSection('pensar-la-epoca')}
+              className="rounded-3xl border border-[#111111] bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-[#111111] transition-all hover:shadow-lg cursor-pointer group relative overflow-hidden"
+            >
+              <div>
+                {/* Top Banner */}
+                <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#e5e4e0] text-[10px] font-mono uppercase tracking-wider text-[#8c8a85]">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded-full bg-red-600 text-white font-bold text-[9px]">
+                      ★ DESTACADO
+                    </span>
+                    <span className="text-[#111111] font-semibold">CICLO · PENSAR LA ÉPOCA</span>
+                  </div>
+                  <span>{featuredPensarLaEpocaEpisode.year || 'Ciclo actual'}</span>
+                </div>
+
+                {/* Portada del video — click para reproducir la entrevista */}
+                <div className="mb-6 rounded-2xl overflow-hidden border border-[#e5e4e0] aspect-[16/9] relative bg-[#bbc6da] group-hover:scale-[1.01] transition-transform">
+                  {showFeaturedPleVideo &&
+                  featuredPensarLaEpocaEpisode.videoUrl &&
+                  getYouTubeEmbedUrl(featuredPensarLaEpocaEpisode.videoUrl) ? (
+                    <iframe
+                      src={getYouTubeEmbedUrl(featuredPensarLaEpocaEpisode.videoUrl)!}
+                      title={featuredPensarLaEpocaEpisode.title}
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (
+                          featuredPensarLaEpocaEpisode.videoUrl &&
+                          getYouTubeEmbedUrl(featuredPensarLaEpocaEpisode.videoUrl)
+                        ) {
+                          setShowFeaturedPleVideo(true);
+                        } else {
+                          onNavigateSection('pensar-la-epoca');
+                        }
+                      }}
+                      aria-label={`Reproducir ${featuredPensarLaEpocaEpisode.title}`}
+                      className="absolute inset-0 w-full h-full cursor-pointer group/cover"
+                    >
+                      <img
+                        src="/pensar-la-epoca-logo.jpeg"
+                        alt={featuredPensarLaEpocaEpisode.title}
+                        className="w-full h-full object-contain group-hover/cover:scale-[1.02] transition-transform"
+                      />
+                      {featuredPensarLaEpocaEpisode.videoUrl && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/5 group-hover/cover:bg-transparent transition-colors pointer-events-none">
+                          <div className="w-16 h-16 rounded-full bg-red-600/90 text-white flex items-center justify-center pl-1 shadow-xl group-hover/cover:scale-110 transition-transform">
+                            <span className="text-2xl">▶</span>
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-black/80 text-white text-[10px] font-mono uppercase tracking-wider pointer-events-none">
+                        Entrevista
+                      </div>
+                    </button>
+                  )}
+                </div>
+
+                {/* Details */}
+                <div className="space-y-2 mb-4">
+                  <div className="text-[10px] font-mono text-[#8c8a85] uppercase tracking-wider">
+                    Ciclo de Entrevistas
+                  </div>
+                  <h3 className="font-serif italic text-2xl sm:text-3xl text-[#111111] font-normal leading-tight group-hover:text-black">
+                    {featuredPensarLaEpocaEpisode.title}
+                  </h3>
+                  {featuredPensarLaEpocaEpisode.guest && (
+                    <p className="text-xs font-mono uppercase text-[#111111]">
+                      Invitado/a: <span className="font-bold">{featuredPensarLaEpocaEpisode.guest}</span>
+                    </p>
+                  )}
+                  <p className="text-xs sm:text-[13px] text-[#555452] font-sans leading-relaxed pt-1 line-clamp-3">
+                    {featuredPensarLaEpocaEpisode.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom Actions + Instagram Share */}
+              <div
+                className="pt-4 border-t border-[#e5e4e0] flex items-center justify-between gap-3"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => onNavigateSection('pensar-la-epoca')}
+                  className="px-5 py-2 text-xs font-mono uppercase tracking-wider bg-[#111111] text-white rounded-full hover:bg-[#333230] transition-colors shadow-xs"
+                >
+                  Ir al Ciclo →
+                </button>
+
+                <ShareInstagramButton
+                  title={featuredPensarLaEpocaEpisode.title}
+                  category="Ciclo de Entrevistas"
+                  type="audiovisual"
+                  instagramHandle={igHandle}
+                  instagramUrl={undefined}
+                  imageUrl={featuredPensarLaEpocaEpisode.image || (featuredPensarLaEpocaEpisode.videoUrl ? getYouTubeThumbnail(featuredPensarLaEpocaEpisode.videoUrl) || undefined : undefined)}
+                />
+              </div>
+            </div>
+          )}
       </div>
     </section>
   );

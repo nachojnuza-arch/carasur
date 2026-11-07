@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { SiteContent, Episode } from '../types';
-import { getYouTubeEmbedUrl, getYouTubeThumbnail } from '../utils/youtube';
+import { getYouTubeEmbedUrl } from '../utils/youtube';
 
 interface PensarLaEpocaSectionProps {
   content: SiteContent;
@@ -42,6 +42,7 @@ export const PensarLaEpocaSection: React.FC<PensarLaEpocaSectionProps> = ({
           <div className="lg:col-span-7 bg-[#0a0a0a] border border-[#333333] rounded-2xl overflow-hidden aspect-[16/9] flex items-center justify-center relative shadow-lg">
             <video
               src="/pensar-la-epoca.mp4"
+              poster="/pensar-la-epoca-poster.jpg"
               autoPlay
               muted
               loop
@@ -102,6 +103,27 @@ export const PensarLaEpocaSection: React.FC<PensarLaEpocaSectionProps> = ({
               className="rounded-2xl border border-[#e5e4e0] bg-white p-6 space-y-4 hover:border-[#111111] transition-all hover:shadow-md flex flex-col justify-between"
             >
               <div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedEpisode(ep)}
+                  className="w-full mb-4 rounded-xl overflow-hidden aspect-[16/9] relative bg-[#bbc6da] border border-[#e5e4e0] group cursor-pointer"
+                >
+                  <img
+                    src="/pensar-la-epoca-logo.jpeg"
+                    alt={ep.title}
+                    className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform"
+                  />
+                  {ep.videoUrl && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/5 group-hover:bg-transparent transition-colors pointer-events-none">
+                      <div className="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-xl">▶</span>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 text-white text-[9px] font-mono uppercase tracking-wider">
+                    {ep.videoUrl ? 'Entrevista' : 'Próximamente'}
+                  </div>
+                </button>
                 <div className="flex items-center justify-between text-[10px] font-mono text-[#8c8a85] uppercase pb-2 border-b border-[#e5e4e0]">
                   <span>{ep.date || 'Ciclo 2025'}</span>
                   <span>Invitado: {ep.guest}</span>
@@ -130,7 +152,7 @@ export const PensarLaEpocaSection: React.FC<PensarLaEpocaSectionProps> = ({
                     rel="noopener noreferrer"
                     className="px-4 py-1.5 text-[10px] uppercase tracking-wider bg-[#111111] text-white rounded-full hover:bg-[#333230]"
                   >
-                    Ver Video ↗
+                    YouTube ↗
                   </a>
                 ) : (
                   <span className="text-[10px] text-[#8c8a85] uppercase px-2.5 py-0.5 bg-[#f9f9f8] rounded-full">
