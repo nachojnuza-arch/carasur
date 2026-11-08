@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cara Sur — Productora</title>
+    <title>Cara Sur — Productora Editorial &amp; Audiovisual</title>
     <meta name="description" content="Cara Sur — Productora editorial y audiovisual. Ensayos críticos, cine, documentales y ciclo de entrevistas 'Pensar la Época'." />
-    <link rel="canonical" href="https://carasurproductora.com.ar/" />
-    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Cara Sur Productora" />
+    <meta name="theme-color" content="#f9f9f8" />
+    <link rel="canonical" href="https://carasur.vercel.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -16,14 +18,55 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Cara Sur — Productora" />
+    <meta property="og:title" content="Cara Sur — Productora Editorial &amp; Audiovisual" />
     <meta property="og:description" content="Cara Sur — Productora editorial y audiovisual. Ensayos críticos, cine, documentales y ciclo de entrevistas 'Pensar la Época'." />
-    <meta property="og:url" content="https://carasurproductora.com.ar/" />
+    <meta property="og:url" content="https://carasur.vercel.app/" />
     <meta property="og:site_name" content="Cara Sur Productora" />
-    <meta property="og:image" content="/logo-circle.png" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:image" content="https://carasur.vercel.app/logo-circle.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Logo de Cara Sur Productora" />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content="/logo-circle.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cara Sur — Productora Editorial &amp; Audiovisual" />
+    <meta name="twitter:description" content="Cara Sur — Productora editorial y audiovisual. Ensayos críticos, cine, documentales y ciclo de entrevistas 'Pensar la Época'." />
+    <meta name="twitter:image" content="https://carasur.vercel.app/logo-circle.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://carasur.vercel.app/#organization",
+            "name": "Cara Sur Productora",
+            "alternateName": "Cara Sur",
+            "url": "https://carasur.vercel.app/",
+            "logo": "https://carasur.vercel.app/logo-circle.png",
+            "description": "Productora editorial y audiovisual independiente dedicada a ensayos críticos, cine, documentales y al ciclo de entrevistas 'Pensar la Época'.",
+            "email": "carasurproductora@gmail.com",
+            "telephone": "+54 221 561 7045",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "La Plata",
+              "addressRegion": "Buenos Aires",
+              "addressCountry": "AR"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://carasur.vercel.app/#website",
+            "url": "https://carasur.vercel.app/",
+            "name": "Cara Sur Productora",
+            "publisher": { "@id": "https://carasur.vercel.app/#organization" },
+            "inLanguage": "es-AR"
+          }
+        ]
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

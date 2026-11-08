@@ -1,17 +1,11 @@
 # Robots.txt - Cara Sur Productora
-# https://carasurproductora.com.ar
+# https://carasur.vercel.app/
 
 User-agent: *
 Allow: /
-Allow: /#editorial
-Allow: /#audiovisual
-Allow: /#pensar-la-epoca
-Allow: /#contacto
 
-# Desautorizar rutas administrativas y APIs internas locales
-Disallow: /admin
-Disallow: /#admin
+# Rutas internas que no deben indexarse
 Disallow: /api/
 
 # Sitemap de indexación
-Sitemap: /sitemap.xml
+Sitemap: https://carasur.vercel.app/sitemap.xml

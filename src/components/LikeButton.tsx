@@ -70,10 +70,11 @@ function useLike(key: string) {
 
   const liked = Boolean(read()[key]);
 
-  return {
-    liked,
-    toggle: () => toggleLike(key),
+  const toggle = () => {
+    toggleLike(key);
   };
+
+  return { liked, toggle };
 }
 
 export interface LikeButtonProps {
